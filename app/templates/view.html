@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1>Author view page</h1>
+
+<p>{{author.name}}</p>
+<p>{{author.email}}</p>
+<p>{{author.desc}}</p>
+
+{% if None not in author.profile %}
+<img src="{{author.profile.url}}" alt="profile" width="200px" height="220px" />
+{% endif %}
+<h3>
+  {% comment %} {% if request.user.has_perms('app.change_author') %}
+  {% endif %} {% endcomment %}
+  <a href="{% url 'updateauthor' author.id %}">update author</a>
+  <a href="{% url 'deleteauthor' author.id %}">delete author</a>
+</h3>
+
+<hr />
+<hr />
+<p></p>
+
+post data
+{% for post in posts %}
+<p>{{post.title}}</p>
+<p>{{post.blog}}</p>
+<p>{{post.created_at}}</p>
+{% if None not in author.profile %}
+<img src="{{author.profile.url}}" alt="profile" width="200px" height="220px" />
+{% endif %} {% endfor %} {% endblock content %}

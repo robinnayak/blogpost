@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>{{formname}} register page </h1>
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">register</button>
+    <p>Already register ? <a href="{% url 'login' %}">login</a></p>
+</form>
+
+    
+{% endblock  %}

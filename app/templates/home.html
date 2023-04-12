@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% comment %} {% load static %} {% endcomment %}
+<div>
+  {% block content %}
+  <h1>Author view</h1>
+  <p>home page</p>
+  <h2>
+    <a href="{% url 'createauthor' %}">create author</a>
+  </h2>
+  <h1>
+    <a href="{% url 'logout' %}">logout</a>
+  </h1>
+
+
+  {% for author in authors %}
+
+  <hr />
+  <hr />
+  <p>{{author.name}}</p>
+  <p>{{author.email}}</p>
+  <p>desc :{{author.desc}}</p>
+  <p>desc :{{author.profile}}</p>
+
+  {% if None not in author.profile %}
+  <img
+    src="{{author.profile.url}}"
+    alt="profile"
+    width="200px"
+    height="220px"
+  />
+  {% endif %}
+  <h3>
+    <a href="{% url 'viewauthor' author.id %}">view author</a>
+    <a href="{% url 'updateauthor' author.id %}">update author</a>
+    <a href="{% url 'deleteauthor' author.id %}">delete author</a>
+  </h3>
+  <hr />
+  <hr />
+  {% endfor %} {% endblock %}
+</div>
